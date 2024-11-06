@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Sidebar from '../Components/Sidebar';
 import Header from '../Components/Header';
 import Swal from 'sweetalert2';
@@ -9,7 +9,7 @@ type RoleType = 'bcnKhoa' | 'giangVien' | 'thuKyKhoa';
 
 export default function Layout() {
   const [isOpen, setIsOpen] = useState(true);
-  
+  const navigate = useNavigate()
   // Lấy role từ localStorage khi component mount
   const [userRole, setUserRole] = useState<RoleType>(() => {
     const savedRole = getRole();
@@ -54,9 +54,7 @@ export default function Layout() {
         setUserRole(nextRole); 
         setRole(nextRole);   
         Swal.fire('Đã đổi vai trò!', `Vai trò hiện tại của bạn là ${getRoleNameInVietnamese(nextRole)}.`, 'success');
-        setTimeout(() => {
-          window.location.reload();
-        }, 500);
+        navigate('/dashboard')
       }
     });
   };
