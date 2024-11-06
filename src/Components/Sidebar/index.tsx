@@ -35,7 +35,7 @@ const menuConfig: Record<RoleType, MenuItem[]> = {
     { path: '/request', icon: <FaComments />, label: 'Xin Nghỉ' },
   ],
   thuKyKhoa: [
-    { path: '/dashboard', icon: <FaTachometerAlt />, label: 'Trang chủ' },
+    { path: '/dashboard', icon: <FaTachometerAlt />, label: 'Trang c hủ' },
     { path: '/open-schedule', icon: <FaCalendarPlus />, label: 'Mở lịch trực' },
     { path: '/register-schedule', icon: <FaCalendarCheck />, label: 'Đăng ký lịch trực' },
     { path: '/history', icon: <FaHistory />, label: 'Xem Lịch Sử Trực' },

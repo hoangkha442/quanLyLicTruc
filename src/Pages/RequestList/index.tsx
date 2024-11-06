@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
-import { requests, users } from '../../Services/data/mockData';
+import { requests} from '../../Services/data/mockData';
 import { FaEdit } from 'react-icons/fa';
 
 const RequestList: React.FC = () => {
