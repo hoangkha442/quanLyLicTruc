@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
-import WOW from 'wowjs';
 
 const useWow = () => {
   useEffect(() => {
-    const wow = new WOW.WOW({
-      live: false,
+    // Use dynamic import
+    import('wowjs').then(({ WOW }) => {
+      const wow = new WOW({
+        live: false,
+      });
+      wow.init();
     });
-    wow.init();
   }, []);
 };
 
