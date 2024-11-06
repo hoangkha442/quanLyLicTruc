@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import {
   FaTachometerAlt, FaPalette, FaComments, FaFileAlt, FaUsers, FaSignOutAlt,
   FaCalendarPlus, FaCalendarCheck, FaHistory, FaEdit, FaChartBar
@@ -55,28 +56,42 @@ const menuConfig: Record<RoleType, MenuItem[]> = {
   ],
 };
 
-export default function Sidebar({ isOpen, role, changeRole }: Props) {
+export default function Sidebar({ isOpen, role }: Props) {
   const location = useLocation();
   const navigate = useNavigate();
   const menuItems = menuConfig[role] || [];
 
-  const handleLogout = () => {
-    clearRole();
-    navigate('/login');
+  // const handleLogout = () => {
+  //   clearRole();
+  //   navigate('/login');
+  // };
+
+  const handleChangeRole = () => {
+    Swal.fire({
+      title: 'Đổi vai trò',
+      text: 'Bạn sẽ đăng xuất và cần đăng nhập lại.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Đồng ý',
+      cancelButtonText: 'Hủy',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        clearRole();
+        navigate('/login');
+      }
+    });
   };
 
   return (
     <section className={`h-screen dark:bg-[#031C30] transition-all fixed duration-500 ${isOpen ? 'w-[260px]' : 'w-[80px]'}  ${isOpen ? "" : '!w-16'}`}>
       <div className="flex flex-col justify-between px-2 py-8 h-full">
         <div className="flex flex-col gap-11">
-          {/* LOGO */}
           <div className="flex items-center gap-4">
             <div className="w-10 h-10 shadow-inner border border-gray-200 shrink-0"></div>
             {isOpen && (
                 <span className="text-4xl text-primary dark:text-darkPrimary tracking-widest font-bold relative z-50 ml-2.5 inline-block before:absolute before:bottom-0 before:opacity-50 before:left-0 before:z-[-1] before:h-3 before:w-full before:bg-[#adfff8]">BS</span>
             )}
           </div>
-          {/* PAGES */}
           <ul className="flex flex-col gap-3 overflow-y-auto overflow-x-hidden h-[calc(100vh-300px)] scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-600">
             {menuItems.map((item, index) => {
               const isActive = location.pathname === item.path;
@@ -103,8 +118,8 @@ export default function Sidebar({ isOpen, role, changeRole }: Props) {
         <div className="shrink-0 flex flex-col gap-5">
           <ThemeToggleButton isOpen={isOpen}/>
           <div
-            onClick={changeRole} 
-            className={`dark:bg-[#193247] bg-[#dbeaff] rounded items-center gap-3 text-primary dark:text-darkPrimary  cursor-pointer flex`}
+            onClick={handleChangeRole} 
+            className={`dark:bg-[#193247] bg-[#dbeaff] rounded items-center gap-3 text-primary dark:text-darkPrimary cursor-pointer flex`}
           >
             <div className="w-11 h-11 flex justify-center items-center shrink-0">
               <FaSignOutAlt className='text-2xl' />
@@ -113,7 +128,7 @@ export default function Sidebar({ isOpen, role, changeRole }: Props) {
               <span className='font-bold'>Đổi Vai Trò</span>
             )}
           </div>
-          <div
+          {/* <div
             onClick={handleLogout} 
             className={`dark:bg-[#193247] bg-[#dbeaff] rounded items-center gap-3 text-primary dark:text-darkPrimary cursor-pointer flex`}
           >
@@ -123,7 +138,7 @@ export default function Sidebar({ isOpen, role, changeRole }: Props) {
             {isOpen && (
               <span className='font-bold'>Đăng Xuất</span>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

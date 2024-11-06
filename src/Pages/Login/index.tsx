@@ -29,33 +29,20 @@ const Login: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     if (selectedRole) {
       const correctCredentials = credentials[selectedRole];
-      
+  
       if (username === correctCredentials.username && password === correctCredentials.password) {
         setRole(selectedRole);
-
-        if (selectedRole === 'giangVien') {
-          Swal.fire({
-            title: 'Quét FaceID',
-            text: 'Vui lòng nhìn vào camera để quét khuôn mặt.',
-            icon: 'info',
-            showCancelButton: false,
-            showConfirmButton: true,
-            confirmButtonText: 'Quét xong'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire('Thành công!', 'Đăng nhập thành công với vai trò Giảng Viên.', 'success').then(() => {
-                navigate('/dashboard'); // Redirect here
-              });
-            }
-          });
-        } else {
-          Swal.fire('Thành công!', `Đăng nhập thành công với vai trò ${selectedRole}.`, 'success').then(() => {
-            navigate('/dashboard'); // Redirect here
-          });
-        }
+  
+        // Set dark mode
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+  
+        Swal.fire('Thành công!', `Đăng nhập thành công với vai trò ${selectedRole}.`, 'success').then(() => {
+          navigate('/dashboard');
+        });
       } else {
         Swal.fire('Lỗi', 'Tên đăng nhập hoặc mật khẩu không đúng.', 'error');
       }
@@ -63,6 +50,7 @@ const Login: React.FC = () => {
       Swal.fire('Lỗi', 'Vui lòng chọn vai trò.', 'error');
     }
   };
+  
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
