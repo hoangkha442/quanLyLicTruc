@@ -13,7 +13,7 @@ export default function Layout() {
   // Lấy role từ localStorage khi component mount
   const [userRole, setUserRole] = useState<RoleType>(() => {
     const savedRole = getRole();
-    return (savedRole as RoleType) || 'giangVien';  // Mặc định là 'giangVien' nếu chưa có role
+    return (savedRole as RoleType) || 'giangVien'; 
   });
 
   const toggleSidebar = () => {
@@ -54,6 +54,9 @@ export default function Layout() {
         setUserRole(nextRole); 
         setRole(nextRole);   
         Swal.fire('Đã đổi vai trò!', `Vai trò hiện tại của bạn là ${getRoleNameInVietnamese(nextRole)}.`, 'success');
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
       }
     });
   };

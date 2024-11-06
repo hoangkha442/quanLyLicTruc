@@ -1,12 +1,8 @@
 import {
   FaTachometerAlt, FaPalette, FaComments, FaFileAlt, FaUsers, FaSignOutAlt,
-  FaCalendarPlus,
-  FaCalendarCheck,
-  FaHistory,
-  FaEdit,
-  FaChartBar
+  FaCalendarPlus, FaCalendarCheck, FaHistory, FaEdit, FaChartBar
 } from 'react-icons/fa';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ThemeToggleButton from '../ThemeToggleButton';
 
 type RoleType = 'bcnKhoa' | 'giangVien' | 'thuKyKhoa';
@@ -23,6 +19,20 @@ type MenuItem = {
   label: string;
 };
 
+const ROLE_KEY = 'userRole';
+
+export const setRole = (role: string) => {
+  localStorage.setItem(ROLE_KEY, role);
+};
+
+export const getRole = (): string | null => {
+  return localStorage.getItem(ROLE_KEY);
+};
+
+export const clearRole = () => {
+  localStorage.removeItem(ROLE_KEY);
+};
+
 const menuConfig: Record<RoleType, MenuItem[]> = {
   bcnKhoa: [
     { path: '/dashboard', icon: <FaTachometerAlt />, label: 'Trang Chủ' },
@@ -35,7 +45,7 @@ const menuConfig: Record<RoleType, MenuItem[]> = {
     { path: '/request', icon: <FaComments />, label: 'Xin Nghỉ' },
   ],
   thuKyKhoa: [
-    { path: '/dashboard', icon: <FaTachometerAlt />, label: 'Trang c hủ' },
+    { path: '/dashboard', icon: <FaTachometerAlt />, label: 'Trang chủ' },
     { path: '/open-schedule', icon: <FaCalendarPlus />, label: 'Mở lịch trực' },
     { path: '/register-schedule', icon: <FaCalendarCheck />, label: 'Đăng ký lịch trực' },
     { path: '/history', icon: <FaHistory />, label: 'Xem Lịch Sử Trực' },
@@ -45,11 +55,15 @@ const menuConfig: Record<RoleType, MenuItem[]> = {
   ],
 };
 
-
-
 export default function Sidebar({ isOpen, role, changeRole }: Props) {
   const location = useLocation();
+  const navigate = useNavigate();
   const menuItems = menuConfig[role] || [];
+
+  const handleLogout = () => {
+    clearRole();
+    navigate('/login');
+  };
 
   return (
     <section className={`h-screen dark:bg-[#031C30] transition-all fixed duration-500 ${isOpen ? 'w-[260px]' : 'w-[80px]'}  ${isOpen ? "" : '!w-16'}`}>
@@ -90,13 +104,24 @@ export default function Sidebar({ isOpen, role, changeRole }: Props) {
           <ThemeToggleButton isOpen={isOpen}/>
           <div
             onClick={changeRole} 
-            className={`bg-[#667A8A] rounded items-center gap-3 text-darkPrimary cursor-pointer flex`}
+            className={`dark:bg-[#193247] bg-[#dbeaff] rounded items-center gap-3 text-primary dark:text-darkPrimary  cursor-pointer flex`}
           >
             <div className="w-11 h-11 flex justify-center items-center shrink-0">
               <FaSignOutAlt className='text-2xl' />
             </div>
             {isOpen && (
               <span className='font-bold'>Đổi Vai Trò</span>
+            )}
+          </div>
+          <div
+            onClick={handleLogout} 
+            className={`dark:bg-[#193247] bg-[#dbeaff] rounded items-center gap-3 text-primary dark:text-darkPrimary cursor-pointer flex`}
+          >
+            <div className="w-11 h-11 flex justify-center items-center shrink-0">
+              <FaSignOutAlt className='text-2xl' />
+            </div>
+            {isOpen && (
+              <span className='font-bold'>Đăng Xuất</span>
             )}
           </div>
         </div>

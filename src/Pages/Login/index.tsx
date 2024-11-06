@@ -14,7 +14,6 @@ const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  // Các thông tin đăng nhập cố định cho từng vai trò
   const credentials: Record<RoleType, { username: string; password: string }> = {
     bcnKhoa: { username: 'bcnKhoaUser', password: 'bcnKhoaPass' },
     giangVien: { username: 'giangVienUser', password: 'giangVienPass' },
@@ -23,7 +22,6 @@ const Login: React.FC = () => {
 
   const handleRoleChange = (role: RoleType) => {
     setSelectedRole(role);
-    // Tự động điền username và password khi chọn vai trò
     const { username, password } = credentials[role];
     setUsername(username);
     setPassword(password);
@@ -35,7 +33,6 @@ const Login: React.FC = () => {
     if (selectedRole) {
       const correctCredentials = credentials[selectedRole];
       
-      // Kiểm tra username và password
       if (username === correctCredentials.username && password === correctCredentials.password) {
         setRole(selectedRole);
 
@@ -50,13 +47,13 @@ const Login: React.FC = () => {
           }).then((result) => {
             if (result.isConfirmed) {
               Swal.fire('Thành công!', 'Đăng nhập thành công với vai trò Giảng Viên.', 'success').then(() => {
-                navigate('/dashboard');
+                navigate('/dashboard'); // Redirect here
               });
             }
           });
         } else {
           Swal.fire('Thành công!', `Đăng nhập thành công với vai trò ${selectedRole}.`, 'success').then(() => {
-            navigate('/dashboard');
+            navigate('/dashboard'); // Redirect here
           });
         }
       } else {
@@ -71,16 +68,13 @@ const Login: React.FC = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="flex flex-col md:flex-row shadow-lg rounded-lg overflow-hidden w-[90%]">
         
-        {/* Phần ảnh nền */}
         <div className="md:w-1/2 bg-white hidden md:flex items-center justify-center">
           <img src={login} alt="Login" className="object-cover w-full h-full p-3" />
         </div>
         
-        {/* Phần form đăng nhập */}
         <div className="md:w-1/2 bg-white p-8 md:py-24 md:px-12">
           <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Đăng Nhập</h2>
           
-          {/* Dropdown để chọn vai trò */}
           <div className="flex flex-col gap-4 mb-6">
             <label htmlFor="role" className="text-gray-600 font-semibold">Chọn vai trò</label>
             <select
@@ -96,45 +90,43 @@ const Login: React.FC = () => {
             </select>
           </div>
 
-          {/* Ô input cho tên đăng nhập và mật khẩu */}
-
-            <form onSubmit={handleLogin} className="space-y-4">
-              <div className="space-y-1">
-                <label htmlFor="username" className="text-gray-600 font-semibold">Tên đăng nhập</label>
-                <input
-                  id="username"
-                  type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:outline-none"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
-              <div className="space-y-1 relative">
-                <label htmlFor="password" className="text-gray-600 font-semibold">Mật khẩu</label>
-                <input
-                  id="password"
-                  type={showPassword ? 'text' : 'password'}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:outline-none"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-3 flex items-center text-gray-600 top-1/3"
-                >
-                  {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </button>
-              </div>
-              <div className="mt-6">
-                <button
-                  type="submit"
-                  className="w-full bg-[#21499a] hover:bg-[#213c73] text-white font-bold py-2 px-4 rounded-md transition duration-300"
-                >
-                  Đăng Nhập
-                </button>
-              </div>
-            </form>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div className="space-y-1">
+              <label htmlFor="username" className="text-gray-600 font-semibold">Tên đăng nhập</label>
+              <input
+                id="username"
+                type="text"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:outline-none"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            <div className="space-y-1 relative">
+              <label htmlFor="password" className="text-gray-600 font-semibold">Mật khẩu</label>
+              <input
+                id="password"
+                type={showPassword ? 'text' : 'password'}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:outline-none"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-3 flex items-center text-gray-600 top-1/3"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
+            <div className="mt-6">
+              <button
+                type="submit"
+                className="w-full bg-[#21499a] hover:bg-[#213c73] text-white font-bold py-2 px-4 rounded-md transition duration-300"
+              >
+                Đăng Nhập
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
