@@ -1,4 +1,4 @@
-import { RouteObject } from 'react-router-dom';
+import { Navigate, RouteObject } from 'react-router-dom';
 import Layout from './Layout';
 import Dashboard from './Pages/Dashboard';
 import Appearance from './Pages/Appearance';
@@ -26,6 +26,7 @@ const routes: RouteObject[] = [
         path: '/',
         element: <Layout />,
         children: [
+          { path: '/', element: <Navigate to="/dashboard" replace /> },
           { path: 'dashboard', element: <Dashboard /> },
           { path: 'appearance', element: <Appearance /> },
           { path: 'comments', element: <Comments /> },
