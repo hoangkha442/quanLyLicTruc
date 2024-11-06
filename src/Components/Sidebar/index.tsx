@@ -86,7 +86,7 @@ export default function Sidebar({ isOpen, role }: Props) {
     <section className={`h-screen dark:bg-[#031C30] transition-all fixed duration-500 ${isOpen ? 'w-[260px]' : 'w-[80px]'}  ${isOpen ? "" : '!w-16'}`}>
       <div className="flex flex-col justify-between px-2 py-8 h-full">
         <div className="flex flex-col gap-11">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 cursor-pointer" onClick={() => { navigate('/dashboard') }}>
             <div className="w-10 h-10 shadow-inner border border-gray-200 shrink-0"></div>
             {isOpen && (
                 <span className="text-4xl text-primary dark:text-darkPrimary tracking-widest font-bold relative z-50 ml-2.5 inline-block before:absolute before:bottom-0 before:opacity-50 before:left-0 before:z-[-1] before:h-3 before:w-full before:bg-[#adfff8]">BS</span>
