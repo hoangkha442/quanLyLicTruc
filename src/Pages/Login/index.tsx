@@ -29,20 +29,42 @@ const Login: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     if (selectedRole) {
       const correctCredentials = credentials[selectedRole];
-  
+
       if (username === correctCredentials.username && password === correctCredentials.password) {
         setRole(selectedRole);
-  
-        // Set dark mode
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-  
-        Swal.fire('Thành công!', `Đăng nhập thành công với vai trò ${selectedRole}.`, 'success').then(() => {
-          navigate('/dashboard');
-        });
+
+        // Xử lý đặc biệt cho giảng viên khi đăng nhập
+        if (selectedRole === 'giangVien') {
+          Swal.fire({
+            title: 'Điểm danh FaceID',
+            text: 'Vui lòng điểm danh qua FaceID để tiếp tục.',
+            icon: 'info',
+            confirmButtonText: 'Điểm danh',
+          }).then(() => {
+            // Popup điểm danh thành công
+            Swal.fire({
+              title: 'Điểm danh thành công!',
+              icon: 'success',
+              confirmButtonText: 'Tiếp tục',
+            }).then(() => {
+              // Chuyển hướng đến dashboard sau khi điểm danh thành công
+              document.documentElement.classList.add('dark');
+              localStorage.setItem('theme', 'dark');
+              navigate('/dashboard');
+            });
+          });
+        } else {
+          // Xử lý đăng nhập cho các vai trò khác
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+
+          Swal.fire('Thành công!', `Đăng nhập thành công với vai trò ${selectedRole}.`, 'success').then(() => {
+            navigate('/dashboard');
+          });
+        }
       } else {
         Swal.fire('Lỗi', 'Tên đăng nhập hoặc mật khẩu không đúng.', 'error');
       }
@@ -50,7 +72,6 @@ const Login: React.FC = () => {
       Swal.fire('Lỗi', 'Vui lòng chọn vai trò.', 'error');
     }
   };
-  
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">

@@ -39,11 +39,13 @@ const menuConfig: Record<RoleType, MenuItem[]> = {
     { path: '/dashboard', icon: <FaTachometerAlt />, label: 'Trang Chủ' },
     { path: '/reports', icon: <FaFileAlt />, label: 'Báo Cáo' },
     { path: '/schedule', icon: <FaUsers />, label: 'Lịch Trực' },
+    { path: '/violations', icon: <FaChartBar />, label: 'Quản Lý Vi Phạm' },
   ],
   giangVien: [
     { path: '/dashboard', icon: <FaTachometerAlt />, label: 'Trang Chủ' },
     { path: '/attendance', icon: <FaPalette />, label: 'Điểm Danh' },
     { path: '/request', icon: <FaComments />, label: 'Xin Nghỉ' },
+    { path: '/my-history', icon: <FaHistory />, label: 'Lịch Sử Điểm Danh' },
   ],
   thuKyKhoa: [
     { path: '/dashboard', icon: <FaTachometerAlt />, label: 'Trang chủ' },
@@ -89,7 +91,7 @@ export default function Sidebar({ isOpen, role }: Props) {
           <div className="flex items-center gap-4 cursor-pointer" onClick={() => { navigate('/dashboard') }}>
             <div className="w-10 h-10 shadow-inner border border-gray-200 shrink-0"></div>
             {isOpen && (
-                <span className="text-4xl text-primary dark:text-darkPrimary tracking-widest font-bold relative z-50 ml-2.5 inline-block before:absolute before:bottom-0 before:opacity-50 before:left-0 before:z-[-1] before:h-3 before:w-full before:bg-[#adfff8]">BS</span>
+                <span className="text-4xl text-primary dark:text-darkPrimary tracking-widest font-bold relative z-50 ml-2.5 inline-block before:absolute before:bottom-0 before:opacity-50 before:left-0 before:z-[-1] before:h-3 before:w-full before:bg-[#adfff8]">QLLT</span>
             )}
           </div>
           <ul className="flex flex-col gap-3 overflow-y-auto overflow-x-hidden h-[calc(100vh-300px)] scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-600">

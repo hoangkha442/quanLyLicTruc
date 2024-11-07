@@ -13,8 +13,8 @@ export const shifts = [
     room: 'Phòng A1',
     assignedUser: 1,
     history: [
-      { date: '2023-10-01', userId: 1, userName: 'Nguyễn Văn A', checkInTime: '08:00', checkOutTime: '12:00' },
-      { date: '2023-10-08', userId: 2, userName: 'Trần Thị B', checkInTime: '08:10', checkOutTime: '12:00' },
+      { date: '2023-10-01', userId: 1, userName: 'Phan Thị Hồng', checkInTime: '08:00', checkOutTime: '12:00' },
+      { date: '2023-10-08', userId: 2, userName: 'Lý Thị Huyền Châu', checkInTime: '08:10', checkOutTime: '12:00' },
     ],
   },
   {
@@ -29,7 +29,7 @@ export const shifts = [
     room: 'Phòng B2',
     assignedUser: 2,
     history: [
-      { date: '2023-09-30', userId: 2, userName: 'Trần Thị B', checkInTime: '13:05', checkOutTime: '17:00' },
+      { date: '2023-09-30', userId: 2, userName: 'Lý Thị Huyền Châu', checkInTime: '13:05', checkOutTime: '17:00' },
     ],
   },
   {
@@ -100,7 +100,7 @@ export const shifts = [
     room: 'Phòng G7',
     assignedUser: 1,
     history: [
-      { date: '2023-10-04', userId: 1, userName: 'Nguyễn Văn A', checkInTime: '13:00', checkOutTime: '17:00' },
+      { date: '2023-10-04', userId: 1, userName: 'Phan Thị Hồng', checkInTime: '13:00', checkOutTime: '17:00' },
     ],
   },
   {
@@ -128,7 +128,7 @@ export const shifts = [
     room: 'Phòng I9',
     assignedUser: 2,
     history: [
-      { date: '2023-10-05', userId: 2, userName: 'Trần Thị B', checkInTime: '13:00', checkOutTime: '17:00' },
+      { date: '2023-10-05', userId: 2, userName: 'Lý Thị Huyền Châu', checkInTime: '13:00', checkOutTime: '17:00' },
     ],
   },
   {
@@ -143,7 +143,7 @@ export const shifts = [
     room: 'Phòng J10',
     assignedUser: 7,
     history: [
-      { date: '2023-10-06', userId: 7, userName: 'Phạm Quỳnh', checkInTime: '18:10', checkOutTime: '21:00' },
+      { date: '2023-10-06', userId: 7, userName: 'Phan Hồ Viết Trường', checkInTime: '18:10', checkOutTime: '21:00' },
     ],
   },
   {
@@ -171,22 +171,20 @@ export const shifts = [
     room: 'Phòng L12',
     assignedUser: 6,
     history: [
-      { date: '2023-10-07', userId: 6, userName: 'Lê Thanh H', checkInTime: '13:05', checkOutTime: '17:00' },
+      { date: '2023-10-07', userId: 6, userName: 'Đặng Đình Hòa', checkInTime: '13:05', checkOutTime: '17:00' },
     ],
   },
 ];
 
-export const users = [
-  { id: 1, name: 'Nguyễn Văn A', role: 'giangVien' as RoleType },
-  { id: 2, name: 'Trần Thị B', role: 'giangVien' as RoleType },
-  { id: 3, name: 'Kiều Linh', role: 'thuKyKhoa' as RoleType },
-  { id: 4, name: 'Phạm Thị D', role: 'thuKyKhoa' as RoleType },
-  { id: 5, name: 'Hoàng Văn E', role: 'bcnKhoa' as RoleType },
-  { id: 6, name: 'Lê Thanh H', role: 'giangVien' as RoleType },
-  { id: 7, name: 'Phạm Quỳnh', role: 'giangVien' as RoleType },
-  { id: 8, name: 'Đặng Phương', role: 'thuKyKhoa' as RoleType },
-];
 
+export const users = [
+  { id: 1, name: 'Phan Thị Hồng', role: 'giangVien' as RoleType },
+  { id: 2, name: 'Lý Thị Huyền Châu', role: 'giangVien' as RoleType },
+  { id: 3, name: 'Kiều Linh', role: 'thuKyKhoa' as RoleType },
+  { id: 5, name: 'Bùi Minh Phụng', role: 'bcnKhoa' as RoleType },
+  { id: 6, name: 'Đặng Đình Hòa', role: 'giangVien' as RoleType },
+  { id: 7, name: 'Phan Hồ Viết Trường', role: 'giangVien' as RoleType },
+];
 export const requests = [
   {
     id: 1,
@@ -194,8 +192,8 @@ export const requests = [
     description: 'Xin phép đổi ca trực sáng thứ Hai thành chiều thứ Hai.',
     status: 'Pending',
     createdDate: '2023-10-01',
-    userId: 1, 
-    userName: 'Nguyễn Văn A'
+    userId: 1,
+    userName: 'Phan Thị Hồng',
   },
   {
     id: 2,
@@ -204,7 +202,7 @@ export const requests = [
     status: 'Approved',
     createdDate: '2023-10-02',
     userId: 2,
-    userName: 'Trần Thị B'
+    userName: 'Lý Thị Huyền Châu',
   },
   {
     id: 3,
@@ -213,6 +211,6 @@ export const requests = [
     status: 'Rejected',
     createdDate: '2023-10-03',
     userId: 1,
-    userName: 'Nguyễn Văn A'
+    userName: 'Phan Thị Hồng',
   },
 ];
