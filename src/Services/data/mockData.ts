@@ -13,8 +13,8 @@ export const shifts = [
     room: 'Phòng A1',
     assignedUser: 1,
     history: [
-      { date: '2023-10-01', userId: 1, userName: 'Phan Thị Hồng', checkInTime: '08:00', checkOutTime: '12:00' },
-      { date: '2023-10-08', userId: 2, userName: 'Lý Thị Huyền Châu', checkInTime: '08:10', checkOutTime: '12:00' },
+      { date: '2024-10-07', userId: 1, userName: 'Phan Thị Hồng', checkInTime: '08:00', checkOutTime: '12:00' },
+      { date: '2024-10-14', userId: 2, userName: 'Lý Thị Huyền Châu', checkInTime: '08:10', checkOutTime: '12:00' },
     ],
   },
   {
@@ -29,7 +29,7 @@ export const shifts = [
     room: 'Phòng B2',
     assignedUser: 2,
     history: [
-      { date: '2023-09-30', userId: 2, userName: 'Lý Thị Huyền Châu', checkInTime: '13:05', checkOutTime: '17:00' },
+      { date: '2024-10-14', userId: 2, userName: 'Lý Thị Huyền Châu', checkInTime: '13:05', checkOutTime: '17:00' },
     ],
   },
   {
@@ -57,7 +57,7 @@ export const shifts = [
     room: 'Phòng D4',
     assignedUser: 3,
     history: [
-      { date: '2023-10-02', userId: 3, userName: 'Kiều Linh', checkInTime: '08:15', checkOutTime: '12:00' },
+      { date: '2024-10-15', userId: 3, userName: 'Kiều Linh', checkInTime: '08:15', checkOutTime: '12:00' },
     ],
   },
   {
@@ -85,7 +85,7 @@ export const shifts = [
     room: 'Phòng F6',
     assignedUser: 4,
     history: [
-      { date: '2023-10-03', userId: 4, userName: 'Phạm Thị D', checkInTime: '08:00', checkOutTime: '12:00' },
+      { date: '2024-10-16', userId: 4, userName: 'Phạm Thị D', checkInTime: '08:00', checkOutTime: '12:00' },
     ],
   },
   {
@@ -100,7 +100,7 @@ export const shifts = [
     room: 'Phòng G7',
     assignedUser: 1,
     history: [
-      { date: '2023-10-04', userId: 1, userName: 'Phan Thị Hồng', checkInTime: '13:00', checkOutTime: '17:00' },
+      { date: '2024-10-16', userId: 1, userName: 'Phan Thị Hồng', checkInTime: '13:00', checkOutTime: '17:00' },
     ],
   },
   {
@@ -128,7 +128,7 @@ export const shifts = [
     room: 'Phòng I9',
     assignedUser: 2,
     history: [
-      { date: '2023-10-05', userId: 2, userName: 'Lý Thị Huyền Châu', checkInTime: '13:00', checkOutTime: '17:00' },
+      { date: '2024-10-17', userId: 2, userName: 'Lý Thị Huyền Châu', checkInTime: '13:00', checkOutTime: '17:00' },
     ],
   },
   {
@@ -143,7 +143,7 @@ export const shifts = [
     room: 'Phòng J10',
     assignedUser: 7,
     history: [
-      { date: '2023-10-06', userId: 7, userName: 'Phan Hồ Viết Trường', checkInTime: '18:10', checkOutTime: '21:00' },
+      { date: '2024-11-06', userId: 7, userName: 'Phan Hồ Viết Trường', checkInTime: '18:10', checkOutTime: '21:00' },
     ],
   },
   {
@@ -171,11 +171,10 @@ export const shifts = [
     room: 'Phòng L12',
     assignedUser: 6,
     history: [
-      { date: '2023-10-07', userId: 6, userName: 'Đặng Đình Hòa', checkInTime: '13:05', checkOutTime: '17:00' },
+      { date: '2024-11-07', userId: 6, userName: 'Đặng Đình Hòa', checkInTime: '13:05', checkOutTime: '17:00' },
     ],
   },
 ];
-
 
 export const users = [
   { id: 1, name: 'Phan Thị Hồng', role: 'giangVien' as RoleType },
@@ -185,31 +184,32 @@ export const users = [
   { id: 6, name: 'Đặng Đình Hòa', role: 'giangVien' as RoleType },
   { id: 7, name: 'Phan Hồ Viết Trường', role: 'giangVien' as RoleType },
 ];
+
 export const requests = [
   {
     id: 1,
     title: 'Xin đổi ca trực',
     description: 'Xin phép đổi ca trực sáng thứ Hai thành chiều thứ Hai.',
     status: 'Pending',
-    createdDate: '2023-10-01',
+    createdDate: '2024-10-01',
     userId: 1,
     userName: 'Phan Thị Hồng',
   },
   {
     id: 2,
     title: 'Xin nghỉ phép',
-    description: 'Xin nghỉ phép vào ngày 2023-10-15.',
+    description: 'Xin nghỉ phép vào ngày 2024-10-15.',
     status: 'Approved',
-    createdDate: '2023-10-02',
+    createdDate: '2024-10-02',
     userId: 2,
     userName: 'Lý Thị Huyền Châu',
   },
   {
     id: 3,
     title: 'Xin đổi phòng trực',
-    description: 'Xin đổi phòng trực từ A1 sang B2 vào ca trực ngày 2023-10-10.',
+    description: 'Xin đổi phòng trực từ A1 sang B2 vào ca trực ngày 2024-10-10.',
     status: 'Rejected',
-    createdDate: '2023-10-03',
+    createdDate: '2024-10-03',
     userId: 1,
     userName: 'Phan Thị Hồng',
   },
